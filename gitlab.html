@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Git spindle for GitLab &mdash; git-spindle 3.2 documentation</title>
+    <title>Git spindle for GitLab &mdash; git-spindle 3.3 documentation</title>
     
     <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.2',
+        VERSION:     '3.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,15 +27,15 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/cloud.js"></script>
-    <link rel="top" title="git-spindle 3.2 documentation" href="index.html" />
+    <link rel="top" title="git-spindle 3.3 documentation" href="index.html" />
     <link rel="next" title="Git spindle for BitBucket" href="bitbucket.html" />
     <link rel="prev" title="Git spindle for GitHub" href="github.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -47,7 +47,7 @@
         <li class="right" >
           <a href="github.html" title="Git spindle for GitHub"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="index.html">git-spindle 3.2 documentation</a> &raquo;</li>
+    <li><a href="index.html">git-spindle 3.3 documentation</a> &raquo;</li>
  
       </ul>
     </div>
@@ -57,7 +57,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="git-spindle-for-gitlab">
 <h1>Git spindle for GitLab<a class="headerlink" href="#git-spindle-for-gitlab" title="Permalink to this headline">¶</a></h1>
@@ -68,11 +68,11 @@ requests.</p>
 <h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
 <p>The first time you use <strong class="command">git lab</strong>, it will ask you for your GitLab
 username and password. It then requests (and stores) your API authentication.</p>
-<p>The authentication token is stored in <tt class="file docutils literal"><span class="pre">~/.gitspindle</span></tt>. Never share this
+<p>The authentication token is stored in <code class="file docutils literal"><span class="pre">~/.gitspindle</span></code>. Never share this
 token with anyone as it gives full access to your GitLab account.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab whoami</tt></dt>
+<code class="descname">git lab whoami</code></dt>
 <dd></dd></dl>
 
 <p>A simple command to try out is <strong class="command">git lab whoami</strong>, which tells you what
@@ -92,7 +92,7 @@ RSA key   ...N0nFw3oW5l (Dennis Kaarsemaker (git))
 </div>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab whois &lt;user&gt;...</tt></dt>
+<code class="descname">git lab whois &lt;user&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>If you want to see some information about other users, use <strong class="command">git lab whois</strong>:</p>
@@ -104,28 +104,28 @@ Profile   https://gitlab.com/u/sigmavirus24
 <p>Sadly, GitLab does not give a lot of information about other users.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab repos [--no-forks]</tt></dt>
+<code class="descname">git lab repos [--no-forks]</code></dt>
 <dd></dd></dl>
 
-<p>List all your repositories. Specify <em class="xref std std-option">--no-forks</em> to exclude forked
+<p>List all your repositories. Specify <code class="xref std std-option docutils literal"><span class="pre">--no-forks</span></code> to exclude forked
 repositories.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab add-public-keys [&lt;key&gt;...]</tt></dt>
+<code class="descname">git lab add-public-keys [&lt;key&gt;...]</code></dt>
 <dd></dd></dl>
 
-<p>Add SSH public keys (default: <tt class="file docutils literal"><span class="pre">~/.ssh/*.pub</span></tt>) to your account.</p>
+<p>Add SSH public keys (default: <code class="file docutils literal"><span class="pre">~/.ssh/*.pub</span></code>) to your account.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab public-keys [&lt;user&gt;]</tt></dt>
+<code class="descname">git lab public-keys [&lt;user&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Display all public keys of a user, in a format that can be added to
-<tt class="file docutils literal"><span class="pre">~/.authorized_keys</span></tt>. Note that only admins can see this information for
+<code class="file docutils literal"><span class="pre">~/.authorized_keys</span></code>. Note that only admins can see this information for
 other users.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab log [&lt;repo&gt;]</tt></dt>
+<code class="descname">git lab log [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Displays a log of actions done to a repository, such as pushes and issue
@@ -136,7 +136,7 @@ comments.</p>
 <p><strong class="command">git lab</strong> supports using more than one account, and using local
 installs of GitLab CE and EE. To use a non-default account outside a
 repository, for example when cloning, you have to tell <strong class="command">git lab</strong> which
-account to use using <em class="xref std std-option">--account</em>:</p>
+account to use using <code class="xref std std-option docutils literal"><span class="pre">--account</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ git lab --account test-account clone seveas/whelk
 </pre></div>
 </div>
@@ -150,7 +150,7 @@ $ git lab issues
 </div>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab add-account [--host=&lt;host&gt;] &lt;alias&gt;</tt></dt>
+<code class="descname">git lab add-account [--host=&lt;host&gt;] &lt;alias&gt;</code></dt>
 <dd></dd></dl>
 
 <p>To add a new account, use the <strong class="command">add-account</strong> command. If the account
@@ -158,10 +158,10 @@ lives on a GitLab EE or CE instance other than gitlab.com, you can specify its
 hostname.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab config [--unset] &lt;key&gt; [&lt;value&gt;]</tt></dt>
+<code class="descname">git lab config [--unset] &lt;key&gt; [&lt;value&gt;]</code></dt>
 <dd></dd></dl>
 
-<p>Set, get or unset a configuration variable in <tt class="file docutils literal"><span class="pre">~/.gitspindle</span></tt>. Similar to
+<p>Set, get or unset a configuration variable in <code class="file docutils literal"><span class="pre">~/.gitspindle</span></code>. Similar to
 <strong class="command">git config</strong>, but only single-level keys are allowed, and the section
 is hardcoded to be the current account.</p>
 <p>To change the hostname of any account, including the default one, you can use
@@ -172,7 +172,7 @@ https://gitlab.example.com</strong>.</p>
 <h2>Interacting with repositories<a class="headerlink" href="#interacting-with-repositories" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab create [--private|--internal] [--group=&lt;group&gt;] [--description=&lt;description&gt;]</tt></dt>
+<code class="descname">git lab create [--private|--internal] [--group=&lt;group&gt;] [--description=&lt;description&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Create a (possibly private/internal) repository on GitLab for your current
@@ -183,27 +183,34 @@ have GitLab as remote &#8220;origin&#8221;, so <strong class="command">git push 
 group to create the repository for.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab set-origin [--ssh|--http]</tt></dt>
+<code class="descname">git lab set-origin [--ssh|--http] [--triangular]</code></dt>
 <dd></dd></dl>
 
-<p>Fix the configuration of your repository&#8217;s remotes. Remote &#8220;origin&#8221; will be set
-to your GitLab repository. If that repository is a fork, remote &#8220;upstream&#8221; will
+<p>Fix the configuration of your repository&#8217;s remotes. The remote &#8220;origin&#8221; will be
+set to your GitLab repository. If &#8220;origin&#8221; is a fork, an &#8220;upstream&#8221; remote will
 be set to the repository you forked from.</p>
-<p>For origin, an SSH url is used. For upstream, set-origin defaults to adding an
-http url, but this can be overridden. For non-public repos SSH is used.</p>
+<p>All non-tracking branches with a matching counterpart in &#8220;origin&#8221; will be set to
+track &#8220;origin&#8221; (push and pull to it). Use <code class="xref std std-option docutils literal"><span class="pre">--triangular</span></code> to set remotes
+in a triangular fashion where <strong class="command">git pull</strong> pulls from &#8220;upstream&#8221; and
+<strong class="command">git push</strong> pushes to &#8220;origin&#8221;.</p>
+<p>For &#8220;origin&#8221;, an SSH url is used. For &#8220;upstream&#8221;, set-origin defaults to adding
+a git url, but this can be overridden. For private repos, SSH is used.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab clone [--ssh|--http] [--parent] [git-clone-options] &lt;repo&gt; [&lt;dir&gt;]</tt></dt>
+<code class="descname">git lab clone [--ssh|--http] [--triangular] [--parent] [git-clone-options] &lt;repo&gt; [&lt;dir&gt;]</code></dt>
 <dd></dd></dl>
 
-<p>Clone a GitLab repository by name (e.g. seveas/hacks) or URL. If it&#8217;s a fork,
-the &#8220;upstream&#8221; origin will be set up too. Defaults to cloning from an http url,
-but this can be overridden. For non-public repos SSH is used.</p>
+<p>Clone a GitLab repository by name (e.g. seveas/hacks) or URL. The &#8220;origin&#8221;
+remote will be set and, like with set-origin, if &#8220;origin&#8221; is a fork t
+&#8220;upstream&#8221; remote will be set too. The option <code class="xref std std-option docutils literal"><span class="pre">--triangular</span></code> can be used
+for a triangular setup.</p>
+<p>Defaults to cloning from an http url, but this can be overridden. For private
+repos, SSH is used.</p>
 <p>This command accepts all options git clone accepts and will forward those to
 <strong class="command">git clone</strong>.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab cat &lt;file&gt;...</tt></dt>
+<code class="descname">git lab cat &lt;file&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Display the contents of a file on GitLab. File can start with repository names
@@ -211,7 +218,7 @@ and refs. For example: <cite>master:bin/git-lab</cite>, <cite>git-spindle:master
 or <cite>seveas/git-spindle:master:bin/git-lab</cite>.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab ls [&lt;dir&gt;...]</tt></dt>
+<code class="descname">git lab ls [&lt;dir&gt;...]</code></dt>
 <dd></dd></dl>
 
 <p>Display the contents of a directory on GitLab. Directory can start with
@@ -219,17 +226,19 @@ repository names and refs. For example: <cite>master:bin/git-lab</cite>,
 <cite>git-spindle:master:bin/git-lab</cite> or <cite>seveas/git-spindle:master:bin/git-lab</cite>.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab fork [--ssh|--http] [&lt;repo&gt;]</tt></dt>
+<code class="descname">git lab fork [--ssh|--http] [--triangular] [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Fork another person&#8217;s git repository on GitLab and clones that repository
-locally. Repo can be specified as a (git) url or simply username/repo. Like
-with set-origin, the &#8220;origin&#8221; and &#8220;upstream&#8221; remotes will be set up too.</p>
+locally. Repo can be specified as a (git) url or simply username/repo. Like with
+set-origin, the &#8220;origin&#8221; and &#8220;upstream&#8221; remotes will be set up too. The option
+<code class="xref std std-option docutils literal"><span class="pre">--triangular</span></code> can be used for a triangular setup.</p>
+<p>Defaults to cloning from a git url, but this can be overridden.</p>
 <p>Calling fork in a previously cloned-but-not-forked repository will create a
 fork of that repository and set up your remotes.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab add-remote [--ssh|--http] &lt;user&gt; [&lt;name&gt;]</tt></dt>
+<code class="descname">git lab add-remote [--ssh|--http] &lt;user&gt; [&lt;name&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Add a users fork as a remote using the specified name or the user&#8217;s login as
@@ -237,7 +246,7 @@ name for the remote. Defaults to adding an http url, but this can be
 overridden. For private repos SSH is used.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab fetch [--ssh|--http] &lt;user&gt; [&lt;refspec&gt;]</tt></dt>
+<code class="descname">git lab fetch [--ssh|--http] &lt;user&gt; [&lt;refspec&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>If you don&#8217;t want to add a user&#8217;s fork as a remote, but to want to fetch some
@@ -245,7 +254,7 @@ refs from it, you can use the <strong class="command">fetch</strong> command. Yo
 refs to fetch, and if you don&#8217;t give a refspec, it will fetch all branches.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab browse [--parent] [&lt;repo&gt;] [&lt;section&gt;]</tt></dt>
+<code class="descname">git lab browse [--parent] [&lt;repo&gt;] [&lt;section&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Browse a repository (or its parent) on GitLab. By default the repository&#8217;s
@@ -253,14 +262,14 @@ homepage is opened, but you can specify a different section, such as issues,
 merge_requests, wiki, files, commits, branches, graphs or settings.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab mirror [--ssh|--http] [--goblet] [&lt;repo&gt;]</tt></dt>
+<code class="descname">git lab mirror [--ssh|--http] [--goblet] [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Mirror a repository from GitLab. This is similar to clone, but clones into a
 bare repository and maps all remote refs to local refs. When run without
 argument, the current repository will be updated. You can also specify
-<em class="xref std std-option">*</em> as repository to mirror all your repositories.</p>
-<p>When you use the <em class="xref std std-option">--goblet</em> option, the resulting mirror will be
+<code class="xref std std-option docutils literal"><span class="pre">*</span></code> as repository to mirror all your repositories.</p>
+<p>When you use the <code class="xref std std-option docutils literal"><span class="pre">--goblet</span></code> option, the resulting mirror will be
 configured for the goblet web interface, using description, owner and clone
 information from GitLab.</p>
 </div>
@@ -268,25 +277,25 @@ information from GitLab.</p>
 <h2>Administering repositories<a class="headerlink" href="#administering-repositories" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab members [&lt;repo&gt;]</tt></dt>
+<code class="descname">git lab members [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>List all people with push access to this repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab add-member [--access-level=guest|reporter|developer|master|owner] &lt;user&gt;...</tt></dt>
+<code class="descname">git lab add-member [--access-level=guest|reporter|developer|master|owner] &lt;user&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Grant people access to this repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab remove-member &lt;user&gt;...</tt></dt>
+<code class="descname">git lab remove-member &lt;user&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Revoke access to this repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab protected</tt></dt>
+<code class="descname">git lab protected</code></dt>
 <dd></dd></dl>
 
 <p>List all protected branches. Protected branches cannot be force-pushed or
@@ -294,13 +303,13 @@ deleted, and can only be pushed to by people with the master or owner access
 level.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab protect &lt;branch&gt;</tt></dt>
+<code class="descname">git lab protect &lt;branch&gt;</code></dt>
 <dd></dd></dl>
 
 <p>Mark a branch as protected.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab unprotect &lt;branch&gt;</tt></dt>
+<code class="descname">git lab unprotect &lt;branch&gt;</code></dt>
 <dd></dd></dl>
 
 <p>Remove a branch&#8217;s protection.</p>
@@ -309,23 +318,23 @@ level.</p>
 <h2>Issues and pull requests<a class="headerlink" href="#issues-and-pull-requests" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab issues [&lt;repo&gt;] [--parent] [&lt;filter&gt;...]</tt></dt>
+<code class="descname">git lab issues [&lt;repo&gt;] [--parent] [&lt;filter&gt;...]</code></dt>
 <dd></dd></dl>
 
 <p>List all open issues. You can specify <a class="reference external" href="https://github.com/gitlabhq/gitlabhq/blob/master/doc/api/issues.md">filters</a> to filter issues. When you
-specify <em class="xref std std-option">--parent</em>, list all open issues for the parent repository.</p>
+specify <code class="xref std std-option docutils literal"><span class="pre">--parent</span></code>, list all open issues for the parent repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab issue [&lt;repo&gt;] [--parent] [&lt;issue&gt;...]</tt></dt>
+<code class="descname">git lab issue [&lt;repo&gt;] [--parent] [&lt;issue&gt;...]</code></dt>
 <dd></dd></dl>
 
-<p>Shows details about the mentioned issue numbers. As with <em class="xref std std-option">issues</em>, you
-can use the <em class="xref std std-option">--parent</em> option to use the parent repository. If you do
+<p>Shows details about the mentioned issue numbers. As with <code class="xref std std-option docutils literal"><span class="pre">issues</span></code>, you
+can use the <code class="xref std std-option docutils literal"><span class="pre">--parent</span></code> option to use the parent repository. If you do
 not specify an issue number, you will be prompted for a message that will be
 used to create a new issue.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab merge-request [--yes] [&lt;yours:theirs&gt;]</tt></dt>
+<code class="descname">git lab merge-request [--yes] [&lt;yours:theirs&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Files a pull request to merge branch &#8220;yours&#8221; (default: the current branch) into
@@ -338,7 +347,7 @@ that is not ascii or utf-8, git lab will misbehave.</p>
 and you will not be asked to write a pull request message.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab apply-merge &lt;merge-request-number&gt;</tt></dt>
+<code class="descname">git lab apply-merge &lt;merge-request-number&gt;</code></dt>
 <dd></dd></dl>
 
 <p>GitLab makes it easy for you to merge merge requests, but if you want to keep
@@ -349,7 +358,7 @@ your history linear, this one is for you. It applies a merge request using
 <h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git lab calendar [&lt;user&gt;]</tt></dt>
+<code class="descname">git lab calendar [&lt;user&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Show a timeline of a your activity, or that of another user. The timeline will
@@ -361,7 +370,7 @@ look like that on your GitLab profile page.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><div class="sphinxlocaltoc">
     <h3><a href="index.html">Page contents</a></h3>
     <ul>
@@ -387,7 +396,7 @@ look like that on your GitLab profile page.</p>
     <p class="topless"><a href="bitbucket.html"
                           title="Next page">&rarr; Git spindle for BitBucket</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -406,7 +415,7 @@ look like that on your GitLab profile page.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -418,13 +427,13 @@ look like that on your GitLab profile page.</p>
         <li class="right" >
           <a href="github.html" title="Git spindle for GitHub"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="index.html">git-spindle 3.2 documentation</a> &raquo;</li>
+    <li><a href="index.html">git-spindle 3.3 documentation</a> &raquo;</li>
  
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2015, Dennis Kaarsemaker.
     </div>
     <!-- cloud_sptheme 1.4 -->

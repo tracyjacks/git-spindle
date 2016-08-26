@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Git spindle for GitHub &mdash; git-spindle 3.2 documentation</title>
+    <title>Git spindle for GitHub &mdash; git-spindle 3.3 documentation</title>
     
     <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '3.2',
+        VERSION:     '3.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,15 +27,15 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/cloud.js"></script>
-    <link rel="top" title="git-spindle 3.2 documentation" href="index.html" />
+    <link rel="top" title="git-spindle 3.3 documentation" href="index.html" />
     <link rel="next" title="Git spindle for GitLab" href="gitlab.html" />
     <link rel="prev" title="Git subcommands for interacting with central services" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -47,7 +47,7 @@
         <li class="right" >
           <a href="index.html" title="Git subcommands for interacting with central services"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="index.html">git-spindle 3.2 documentation</a> &raquo;</li>
+    <li><a href="index.html">git-spindle 3.3 documentation</a> &raquo;</li>
  
       </ul>
     </div>
@@ -57,7 +57,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="git-spindle-for-github">
 <h1>Git spindle for GitHub<a class="headerlink" href="#git-spindle-for-github" title="Permalink to this headline">¶</a></h1>
@@ -69,11 +69,11 @@ requests.</p>
 <p>The first time you use <strong class="command">git hub</strong>, it will ask you for your GitHub
 username and password. It then requests (and stores) an API authentication
 token, so you can always revoke access from your <a class="reference external" href="https://github.com/settings/applications">profile page</a>.</p>
-<p>The authentication token is stored in <tt class="file docutils literal"><span class="pre">~/.gitspindle</span></tt>. Never share this
+<p>The authentication token is stored in <code class="file docutils literal"><span class="pre">~/.gitspindle</span></code>. Never share this
 token with anyone as it gives full access to your GitHub account.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub whoami</tt></dt>
+<code class="descname">git hub whoami</code></dt>
 <dd></dd></dl>
 
 <p>A simple command to try out is <strong class="command">git hub whoami</strong>, which tells you what
@@ -94,7 +94,7 @@ RSA key   ...N0nFw3oW5l (Dennis)
 </div>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub whois &lt;user&gt;...</tt></dt>
+<code class="descname">git hub whois &lt;user&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>If you want to see this information about other users, use <strong class="command">git hub whois</strong>:</p>
@@ -109,7 +109,7 @@ Gists     9 public, 0 private
 </div>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub status</tt></dt>
+<code class="descname">git hub status</code></dt>
 <dd></dd></dl>
 
 <p>Shows the last few GitHub status messages:</p>
@@ -128,39 +128,39 @@ Gists     9 public, 0 private
 </div>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub repos [--no-forks] [&lt;user&gt;]</tt></dt>
+<code class="descname">git hub repos [--no-forks] [&lt;user&gt;]</code></dt>
 <dd></dd></dl>
 
-<p>List all repositories owned by a user, by default you. Specify <em class="xref std std-option">--no-forks</em>
+<p>List all repositories owned by a user, by default you. Specify <code class="xref std std-option docutils literal"><span class="pre">--no-forks</span></code>
 to exclude forked repositories.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub add-public-keys [&lt;key&gt;...]</tt></dt>
+<code class="descname">git hub add-public-keys [&lt;key&gt;...]</code></dt>
 <dd></dd></dl>
 
-<p>Add SSH public keys (default: <tt class="file docutils literal"><span class="pre">~/.ssh/*.pub</span></tt>) to your account.</p>
+<p>Add SSH public keys (default: <code class="file docutils literal"><span class="pre">~/.ssh/*.pub</span></code>) to your account.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub public-keys [&lt;user&gt;]</tt></dt>
+<code class="descname">git hub public-keys [&lt;user&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Display all public keys of a user, in a format that can be added to
-<tt class="file docutils literal"><span class="pre">~/.authorized_keys</span></tt>.</p>
+<code class="file docutils literal"><span class="pre">~/.authorized_keys</span></code>.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub log [--type=&lt;type&gt;] [--count=&lt;count&gt;] [--verbose] [&lt;what&gt;]</tt></dt>
+<code class="descname">git hub log [--type=&lt;type&gt;] [--count=&lt;count&gt;] [--verbose] [&lt;what&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Displays a log of your GitHub actions, such as pushes and issue comments. You
 can also specify a user or repository and the relevant log will be shown
 instead of yours.</p>
 <p>If you are only interested in events of a specific type, you can filter for it,
-e.g. <em class="xref std std-option">--type=push</em>. You can also get more (or less) than the default 30
-items in the log by specifying a count. Finally, <em class="xref std std-option">--verbose</em> will give
+e.g. <code class="xref std std-option docutils literal"><span class="pre">--type=push</span></code>. You can also get more (or less) than the default 30
+items in the log by specifying a count. Finally, <code class="xref std std-option docutils literal"><span class="pre">--verbose</span></code> will give
 slightly more verbose output for some log items.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub create-token [--store]</tt></dt>
+<code class="descname">git hub create-token [--store]</code></dt>
 <dd></dd></dl>
 
 <p>Create a personal access token that can be used for git operations (clone,
@@ -168,7 +168,7 @@ fetch, push) over http. Especially useful if you use two-factor authentication,
 as these tokens can be used instead of your password and don&#8217;t require the
 second factor.</p>
 <p>The token is shown in the output of the command. If you specify
-<em class="xref std std-option">--store</em>, the token will also be stored using the git credential
+<code class="xref std std-option docutils literal"><span class="pre">--store</span></code>, the token will also be stored using the git credential
 helpers.</p>
 </div>
 <div class="section" id="using-multiple-accounts">
@@ -176,7 +176,7 @@ helpers.</p>
 <p><strong class="command">git hub</strong> supports using more than one account, and using local
 installs of GitHub enterprise. To use a non-default account outside a
 repository, for example when cloning, you have to tell <strong class="command">git hub</strong> which
-account to use using <em class="xref std std-option">--account</em>:</p>
+account to use using <code class="xref std std-option docutils literal"><span class="pre">--account</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ git hub --account test-account clone seveas/whelk
 </pre></div>
 </div>
@@ -190,17 +190,17 @@ $ git hub issues
 </div>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub add-account [--host=&lt;host&gt;] &lt;alias&gt;</tt></dt>
+<code class="descname">git hub add-account [--host=&lt;host&gt;] &lt;alias&gt;</code></dt>
 <dd></dd></dl>
 
 <p>To add a new account, use the <strong class="command">add-account</strong> command. If the account
 lives on a GitHub Enterprise instance, you can specify its hostname.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub config [--unset] &lt;key&gt; [&lt;value&gt;]</tt></dt>
+<code class="descname">git hub config [--unset] &lt;key&gt; [&lt;value&gt;]</code></dt>
 <dd></dd></dl>
 
-<p>Set, get or unset a configuration variable in <tt class="file docutils literal"><span class="pre">~/.gitspindle</span></tt>. Similar to
+<p>Set, get or unset a configuration variable in <code class="file docutils literal"><span class="pre">~/.gitspindle</span></code>. Similar to
 <strong class="command">git config</strong>, but only single-level keys are allowed, and the section
 is hardcoded to be the current account.</p>
 <p>To change the hostname of any account, including the default one, you can use
@@ -211,7 +211,7 @@ https://github.example.com</strong>.</p>
 <h2>Interacting with repositories<a class="headerlink" href="#interacting-with-repositories" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub create [--private] [--org=&lt;org&gt;] [--description=&lt;description&gt;]</tt></dt>
+<code class="descname">git hub create [--private] [--org=&lt;org&gt;] [--description=&lt;description&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Create a (possibly private) repository on GitHub for your current repository. An
@@ -222,27 +222,36 @@ will be created on GitHub and your local repository will have GitHub as remote
 organization to create the repository for.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub set-origin [--ssh|--http|--git]</tt></dt>
+<code class="descname">git hub set-origin [--ssh|--http|--git] [--triangular]</code></dt>
 <dd></dd></dl>
 
-<p>Fix the configuration of your repository&#8217;s remotes. Remote &#8220;origin&#8221; will be set
-to your GitHub repository. If that repository is a fork, remote &#8220;upstream&#8221; will
-be set to the repository you forked from.</p>
-<p>For origin, an SSH url is used. For upstream, set-origin defaults to adding a
-git url, but this can be overridden. For private repos SSH is used.</p>
+<p>Fix the configuration of your repository&#8217;s remotes. The remote &#8220;origin&#8221; will be
+set to your GitHub repository. If &#8220;origin&#8221; is a fork, an &#8220;upstream&#8221; remote will
+be set to the repository you forked from. If &#8220;origin&#8221; is not a fork, a fetch
+refspec is added to fetch the pull requests for &#8220;origin&#8221; as
+<cite>refs/pull/&lt;id&gt;/head</cite>.</p>
+<p>All non-tracking branches with a matching counterpart in &#8220;origin&#8221; will be set to
+track &#8220;origin&#8221; (push and pull to it). Use <code class="xref std std-option docutils literal"><span class="pre">--triangular</span></code> to set remotes
+in a triangular fashion where <strong class="command">git pull</strong> pulls from &#8220;upstream&#8221; and
+<strong class="command">git push</strong> pushes to &#8220;origin&#8221;.</p>
+<p>For &#8220;origin&#8221;, an SSH url is used. For &#8220;upstream&#8221;, set-origin defaults to adding
+a git url, but this can be overridden. For private repos, SSH is used.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub clone [--ssh|--http|--git] [--parent] [git-clone-options] &lt;repo&gt; [&lt;dir&gt;]</tt></dt>
+<code class="descname">git hub clone [--ssh|--http|--git] [--parent] [git-clone-options] &lt;repo&gt; [&lt;dir&gt;]</code></dt>
 <dd></dd></dl>
 
-<p>Clone a GitHub repository by name (e.g. seveas/hacks) or URL. If it&#8217;s a fork,
-the &#8220;upstream&#8221; origin will be set up too. Defaults to cloning from a git url,
-but this can be overridden. For private repos SSH is used.</p>
+<p>Clone a GitHub repository by name (e.g. seveas/hacks) or URL. The &#8220;origin&#8221;
+remote will be set and, like with set-origin, if &#8220;origin&#8221; is a fork an
+&#8220;upstream&#8221; remote will be set too. The option <code class="xref std std-option docutils literal"><span class="pre">--triangular</span></code> can be used
+for a triangular setup.</p>
+<p>Defaults to cloning from a git url, but this can be overridden. For private
+repos, SSH is used.</p>
 <p>This command accepts all options git clone accepts and will forward those to
 <strong class="command">git clone</strong>.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub cat &lt;file&gt;...</tt></dt>
+<code class="descname">git hub cat &lt;file&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Display the contents of a file on GitHub. File can start with repository names
@@ -250,7 +259,7 @@ and refs. For example: <cite>master:bin/git-hub</cite>, <cite>git-spindle:master
 or <cite>seveas/git-spindle:master:bin/git-hub</cite>.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub ls [&lt;dir&gt;...]</tt></dt>
+<code class="descname">git hub ls [&lt;dir&gt;...]</code></dt>
 <dd></dd></dl>
 
 <p>Display the contents of a directory on GitHub. Directory can start with
@@ -258,29 +267,32 @@ repository names and refs. For example: <cite>master:bin/git-hub</cite>,
 <cite>git-spindle:master:bin/git-hub</cite> or <cite>seveas/git-spindle:master:bin/git-hub</cite>.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub readme [&lt;repo&gt;]</tt></dt>
+<code class="descname">git hub readme [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Download and display a repository&#8217;s README file, whatever its actual name is.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub fork [--ssh|--http|--git] [&lt;repo&gt;]</tt></dt>
+<code class="descname">git hub fork [--ssh|--http|--git] [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Fork another person&#8217;s git repository on GitHub and clone that repository
-locally. Repo can be specified as a (git) url or simply username/repo. Like
-with set-origin, the &#8220;origin&#8221; and &#8220;upstream&#8221; remotes will be set up too.</p>
+locally. The repository can be specified as a (git) url or simply username/repo.
+Like with set-origin, the &#8220;origin&#8221; and &#8220;upstream&#8221; remotes will be set up too.
+The option <code class="xref std std-option docutils literal"><span class="pre">--triangular</span></code> can be used for a triangular setup.</p>
+<p>Defaults to cloning from a git url, but this can be overridden. For private
+repos, SSH is used.</p>
 <p>Calling fork in a previously cloned-but-not-forked repository will create a
 fork of that repository and set up your remotes.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub forks [&lt;repo&gt;]</tt></dt>
+<code class="descname">git hub forks [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>List all forks of this repository, highlighting the original repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub add-remote [--ssh|--http|--git] &lt;user&gt; [&lt;name&gt;]</tt></dt>
+<code class="descname">git hub add-remote [--ssh|--http|--git] &lt;user&gt; [&lt;name&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Add a users fork as a remote using the specified name or the user&#8217;s login as
@@ -288,7 +300,7 @@ name for the remote. Defaults to adding an http url, but this can be
 overridden. For private repos SSH is used.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub fetch [--ssh|--http|--git] &lt;user&gt; [&lt;refspec&gt;]</tt></dt>
+<code class="descname">git hub fetch [--ssh|--http|--git] &lt;user&gt; [&lt;refspec&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>If you don&#8217;t want to add a user&#8217;s fork as a remote, but to want to fetch some
@@ -296,22 +308,22 @@ refs from it, you can use the <strong class="command">fetch</strong> command. Yo
 refs to fetch, and if you don&#8217;t give a refspec, it will fetch all branches.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub browse [--parent] [&lt;repo&gt;] [&lt;section&gt;]</tt></dt>
+<code class="descname">git hub browse [--parent] [&lt;repo&gt;] [&lt;section&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Browse a repository (or its parent) on GitHub. By default the repository&#8217;s
 homepage is opened, but you can specify a different section, such as issues,
-pulls, wiki, branches, releases, contributors, graphs, releases or settings.</p>
+pulls, wiki, branches, releases, contributors, graphs or settings.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub mirror [--ssh|--http|--git] [--goblet] [&lt;repo&gt;]</tt></dt>
+<code class="descname">git hub mirror [--ssh|--http|--git] [--goblet] [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Mirror a repository from GitHub. This is similar to clone, but clones into a
 bare repository and maps all remote refs to local refs. When run without
 argument, the current repository will be updated. You can also specify
-<em class="xref std std-option">user/*</em> as repository to mirror all repositories of a user.</p>
-<p>When you use the <em class="xref std std-option">--goblet</em> option, the resulting mirror will be
+<code class="xref std std-option docutils literal"><span class="pre">user/*</span></code> as repository to mirror all repositories of a user.</p>
+<p>When you use the <code class="xref std std-option docutils literal"><span class="pre">--goblet</span></code> option, the resulting mirror will be
 configured for the goblet web interface, using description, owner and clone
 information from GitHub.</p>
 </div>
@@ -319,32 +331,44 @@ information from GitHub.</p>
 <h2>Administering repositories<a class="headerlink" href="#administering-repositories" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub collaborators [&lt;repo&gt;]</tt></dt>
+<code class="descname">git hub release [--draft] [--prerelease] &lt;tag&gt; [&lt;releasename&gt;]</code></dt>
+<dd></dd></dl>
+
+<p>Create a release on GitHub based on an existing tag.</p>
+<dl class="describe">
+<dt>
+<code class="descname">git hub releases [&lt;repo&gt;]</code></dt>
+<dd></dd></dl>
+
+<p>List all releases for this repository.</p>
+<dl class="describe">
+<dt>
+<code class="descname">git hub collaborators [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>List all people with push access to this repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub add-collaborator &lt;user&gt;...</tt></dt>
+<code class="descname">git hub add-collaborator &lt;user&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Grant people push access to this repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub remove-collaborator &lt;user&gt;...</tt></dt>
+<code class="descname">git hub remove-collaborator &lt;user&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Revoke access to this repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub protected</tt></dt>
+<code class="descname">git hub protected</code></dt>
 <dd></dd></dl>
 
 <p>List all protected branches. Protected branches cannot be force-pushed or
 deleted, and can potentially have required status checks.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub protect [--enforcement-level=&lt;level&gt;] [--contexts=&lt;contexts&gt;] &lt;branch&gt;</tt></dt>
+<code class="descname">git hub protect [--enforcement-level=&lt;level&gt;] [--contexts=&lt;contexts&gt;] &lt;branch&gt;</code></dt>
 <dd></dd></dl>
 
 <p>Protect a branch against force-pushes and deletion. Optionally require status
@@ -353,54 +377,54 @@ continuous-integration/travis-ci) and for whom this is required (everyone or
 non_admins).</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub unprotect &lt;branch&gt;</tt></dt>
+<code class="descname">git hub unprotect &lt;branch&gt;</code></dt>
 <dd></dd></dl>
 
 <p>Remove a branch&#8217;s protection.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub deploy-keys [&lt;repo&gt;]</tt></dt>
+<code class="descname">git hub deploy-keys [&lt;repo&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>List all deploy keys for this repository</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub add-deploy-key [--read-only] &lt;key&gt;...</tt></dt>
+<code class="descname">git hub add-deploy-key [--read-only] &lt;key&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Add a deploy key to a repository, which can be used to fetch and push data via
 ssh. Read-only keys acan only fetch.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub remove-deploy-key &lt;key&gt;...</tt></dt>
+<code class="descname">git hub remove-deploy-key &lt;key&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Remove a deploy key by id. Use the <strong class="command">git hub deploy-keys</strong> command to
 see the id&#8217;s of your deploy keys.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub hooks</tt></dt>
+<code class="descname">git hub hooks</code></dt>
 <dd></dd></dl>
 
 <p>Show all service hooks for this repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub add-hook &lt;name&gt; [&lt;setting&gt;...]</tt></dt>
+<code class="descname">git hub add-hook &lt;name&gt; [&lt;setting&gt;...]</code></dt>
 <dd></dd></dl>
 
 <p>Add a hook to this repository with the appropriate settings. Settings can be
 found in the hooks page on GitHub. One setting all hooks accept is
-<tt class="xref py py-data docutils literal"><span class="pre">events</span></tt>, a comma-separated list of events this hook will be triggered
+<code class="xref py py-data docutils literal"><span class="pre">events</span></code>, a comma-separated list of events this hook will be triggered
 for. A list of all events can be found on the <a class="reference external" href="http://developer.github.com/v3/repos/hooks/">GitHub API page</a></p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub edit-hook &lt;name&gt; [&lt;setting&gt;...]</tt></dt>
+<code class="descname">git hub edit-hook &lt;name&gt; [&lt;setting&gt;...]</code></dt>
 <dd></dd></dl>
 
 <p>Edit one or more settings for a hook.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub remove-hook &lt;name&gt;</tt></dt>
+<code class="descname">git hub remove-hook &lt;name&gt;</code></dt>
 <dd></dd></dl>
 
 <p>Remove a service hook.</p>
@@ -409,23 +433,23 @@ for. A list of all events can be found on the <a class="reference external" href
 <h2>Issues and pull requests<a class="headerlink" href="#issues-and-pull-requests" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub issues [&lt;repo&gt;] [--parent] [&lt;filter&gt;...]</tt></dt>
+<code class="descname">git hub issues [&lt;repo&gt;] [--parent] [&lt;filter&gt;...]</code></dt>
 <dd></dd></dl>
 
 <p>List all open issues. You can specify <a class="reference external" href="http://github3py.readthedocs.org/en/latest/repos.html#github3.repos.Repository.list_issues">filters</a> to filter issues. When you
-specify <em class="xref std std-option">--parent</em>, list all open issues for the parent repository.</p>
+specify <code class="xref std std-option docutils literal"><span class="pre">--parent</span></code>, list all open issues for the parent repository.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub issue [&lt;repo&gt;] [--parent] [&lt;issue&gt;...]</tt></dt>
+<code class="descname">git hub issue [&lt;repo&gt;] [--parent] [&lt;issue&gt;...]</code></dt>
 <dd></dd></dl>
 
-<p>Shows details about the mentioned issue numbers. As with <em class="xref std std-option">issues</em>, you
-can use the <em class="xref std std-option">--parent</em> option to use the parent repository. If you do
+<p>Shows details about the mentioned issue numbers. As with <code class="xref std std-option docutils literal"><span class="pre">issues</span></code>, you
+can use the <code class="xref std std-option docutils literal"><span class="pre">--parent</span></code> option to use the parent repository. If you do
 not specify an issue number, you will be prompted for a message that will be
 used to create a new issue.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub pull-request [--issue=&lt;issue&gt;] [--yes] [&lt;yours:theirs&gt;]</tt></dt>
+<code class="descname">git hub pull-request [--issue=&lt;issue&gt;] [--yes] [&lt;yours:theirs&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Files a pull request to merge branch &#8220;yours&#8221; (default: the current branch) into
@@ -438,7 +462,7 @@ that is not ascii or utf-8, git hub will misbehave.</p>
 and you will not be asked to write a pull request message.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub apply-pr &lt;pr-number&gt;</tt></dt>
+<code class="descname">git hub apply-pr &lt;pr-number&gt;</code></dt>
 <dd></dd></dl>
 
 <p>GitHub makes it easy for you to merge pull requests, but if you want to keep
@@ -449,15 +473,15 @@ your history linear, this one is for you. It applies a pull request using
 <h2>Gists<a class="headerlink" href="#gists" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub gist [--description=&lt;description&gt;] &lt;file&gt;...</tt></dt>
+<code class="descname">git hub gist [--description=&lt;description&gt;] &lt;file&gt;...</code></dt>
 <dd></dd></dl>
 
 <p>Creates a gist (with optional description) from the named files. If you specify
-<tt class="file docutils literal"><span class="pre">-</span></tt> as filename, <tt class="file docutils literal"><span class="pre">stdin</span></tt> will be used, making it easy to pipe
+<code class="file docutils literal"><span class="pre">-</span></code> as filename, <code class="file docutils literal"><span class="pre">stdin</span></code> will be used, making it easy to pipe
 command output to GitHub, for example: <strong class="command">fortune | git hub gist -</strong></p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub gists [&lt;user&gt;]</tt></dt>
+<code class="descname">git hub gists [&lt;user&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>List your gists, or those created by another user.</p>
@@ -466,7 +490,7 @@ command output to GitHub, for example: <strong class="command">fortune | git hub
 <h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub calendar [&lt;user&gt;]</tt></dt>
+<code class="descname">git hub calendar [&lt;user&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Show a timeline of a your activity, or that of another user. The timeline will
@@ -483,36 +507,36 @@ F <span style="color: #3a3a3a">■ </span><span style="color: #008700">■ </spa
 </div>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub check-pages</tt></dt>
+<code class="descname">git hub check-pages</code></dt>
 <dd></dd></dl>
 
 <p>Check your repository for common misconfigurations in the usage of GitHub
 pages, including DNS checks and content checks.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub render [--save=&lt;outfile&gt;] &lt;file&gt;</tt></dt>
+<code class="descname">git hub render [--save=&lt;outfile&gt;] &lt;file&gt;</code></dt>
 <dd></dd></dl>
 
 <p>Lets GitHub render a markdown page and displays the result in your browser or
 save it to a file.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub ignore [&lt;language&gt;...]</tt></dt>
+<code class="descname">git hub ignore [&lt;language&gt;...]</code></dt>
 <dd></dd></dl>
 
-<p>GitHub provides <tt class="file docutils literal"><span class="pre">.gitignore</span></tt> templates for various languages and
+<p>GitHub provides <code class="file docutils literal"><span class="pre">.gitignore</span></code> templates for various languages and
 environments. This command will let you quickly grab them and add them to your
-<tt class="file docutils literal"><span class="pre">.gitignore</span></tt>. For example: <strong class="command">git hub ignore Python C</strong></p>
+<code class="file docutils literal"><span class="pre">.gitignore</span></code>. For example: <strong class="command">git hub ignore Python C</strong></p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub ip-addresses [--git] [--hooks] [--importer] [--pages]</tt></dt>
+<code class="descname">git hub ip-addresses [--git] [--hooks] [--importer] [--pages]</code></dt>
 <dd></dd></dl>
 
 <p>This tells you which ip addresses belong to certain github.com services. Very
 useful to keep firewalls and access control lists up-to-date.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub network [&lt;level&gt;]</tt></dt>
+<code class="descname">git hub network [&lt;level&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>Generates a graphviz graph of people following you, people you follow or people
@@ -524,13 +548,13 @@ who&#8217;s repositories you&#8217;ve forked. For example:</p>
 <img alt="_images/network.png" src="_images/network.png" />
 <dl class="describe">
 <dt>
-<tt class="descname">git hub say [&lt;msg&gt;]</tt></dt>
+<code class="descname">git hub say [&lt;msg&gt;]</code></dt>
 <dd></dd></dl>
 
 <p>This lets the octocat speak to you.</p>
 <dl class="describe">
 <dt>
-<tt class="descname">git hub setup-goblet</tt></dt>
+<code class="descname">git hub setup-goblet</code></dt>
 <dd></dd></dl>
 
 <p>Set up a configuration for the goblet web interface based on data in GitHub.</p>
@@ -541,7 +565,7 @@ who&#8217;s repositories you&#8217;ve forked. For example:</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><div class="sphinxlocaltoc">
     <h3><a href="index.html">Page contents</a></h3>
     <ul>
@@ -568,7 +592,7 @@ who&#8217;s repositories you&#8217;ve forked. For example:</p>
     <p class="topless"><a href="gitlab.html"
                           title="Next page">&rarr; Git spindle for GitLab</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -587,7 +611,7 @@ who&#8217;s repositories you&#8217;ve forked. For example:</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -599,13 +623,13 @@ who&#8217;s repositories you&#8217;ve forked. For example:</p>
         <li class="right" >
           <a href="index.html" title="Git subcommands for interacting with central services"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="index.html">git-spindle 3.2 documentation</a> &raquo;</li>
+    <li><a href="index.html">git-spindle 3.3 documentation</a> &raquo;</li>
  
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2015, Dennis Kaarsemaker.
     </div>
     <!-- cloud_sptheme 1.4 -->
