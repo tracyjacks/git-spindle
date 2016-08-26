@@ -143,20 +143,31 @@ will be created on GitHub and your local repository will have GitHub as remote
 By default the repository is created under your account, but you can specify an
 organization to create the repository for.
 
-.. describe:: git hub set-origin [--ssh|--http|--git]
+.. describe:: git hub set-origin [--ssh|--http|--git] [--triangular]
 
-Fix the configuration of your repository's remotes. Remote "origin" will be set
-to your GitHub repository. If that repository is a fork, remote "upstream" will
-be set to the repository you forked from.
+Fix the configuration of your repository's remotes. The remote "origin" will be
+set to your GitHub repository. If "origin" is a fork, an "upstream" remote will
+be set to the repository you forked from. If "origin" is not a fork, a fetch
+refspec is added to fetch the pull requests for "origin" as
+`refs/pull/<id>/head`.
 
-For origin, an SSH url is used. For upstream, set-origin defaults to adding a
-git url, but this can be overridden. For private repos SSH is used.
+All non-tracking branches with a matching counterpart in "origin" will be set to
+track "origin" (push and pull to it). Use :option:`--triangular` to set remotes
+in a triangular fashion where :command:`git pull` pulls from "upstream" and
+:command:`git push` pushes to "origin".
+
+For "origin", an SSH url is used. For "upstream", set-origin defaults to adding
+a git url, but this can be overridden. For private repos, SSH is used.
 
 .. describe:: git hub clone [--ssh|--http|--git] [--parent] [git-clone-options] <repo> [<dir>]
 
-Clone a GitHub repository by name (e.g. seveas/hacks) or URL. If it's a fork,
-the "upstream" origin will be set up too. Defaults to cloning from a git url,
-but this can be overridden. For private repos SSH is used.
+Clone a GitHub repository by name (e.g. seveas/hacks) or URL. The "origin"
+remote will be set and, like with set-origin, if "origin" is a fork an
+"upstream" remote will be set too. The option :option:`--triangular` can be used
+for a triangular setup.
+
+Defaults to cloning from a git url, but this can be overridden. For private
+repos, SSH is used.
 
 This command accepts all options git clone accepts and will forward those to
 :command:`git clone`.
@@ -180,8 +191,12 @@ Download and display a repository's README file, whatever its actual name is.
 .. describe:: git hub fork [--ssh|--http|--git] [<repo>]
 
 Fork another person's git repository on GitHub and clone that repository
-locally. Repo can be specified as a (git) url or simply username/repo. Like
-with set-origin, the "origin" and "upstream" remotes will be set up too.
+locally. The repository can be specified as a (git) url or simply username/repo.
+Like with set-origin, the "origin" and "upstream" remotes will be set up too.
+The option :option:`--triangular` can be used for a triangular setup.
+
+Defaults to cloning from a git url, but this can be overridden. For private
+repos, SSH is used.
 
 Calling fork in a previously cloned-but-not-forked repository will create a
 fork of that repository and set up your remotes.
@@ -206,7 +221,7 @@ refs to fetch, and if you don't give a refspec, it will fetch all branches.
 
 Browse a repository (or its parent) on GitHub. By default the repository's
 homepage is opened, but you can specify a different section, such as issues,
-pulls, wiki, branches, releases, contributors, graphs, releases or settings.
+pulls, wiki, branches, releases, contributors, graphs or settings.
 
 .. describe:: git hub mirror [--ssh|--http|--git] [--goblet] [<repo>]
 
@@ -221,6 +236,14 @@ information from GitHub.
 
 Administering repositories
 --------------------------
+.. describe:: git hub release [--draft] [--prerelease] <tag> [<releasename>]
+
+Create a release on GitHub based on an existing tag.
+
+.. describe:: git hub releases [<repo>]
+
+List all releases for this repository.
+
 .. describe:: git hub collaborators [<repo>]
 
 List all people with push access to this repository.

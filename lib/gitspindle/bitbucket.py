@@ -115,8 +115,7 @@ class BitBucket(GitSpindle):
             if fork.owner['username'] in opts['<user>']:
                 name = opts['<name>'] or fork.owner['username']
                 url = self.clone_url(fork, opts)
-                self.gitm('remote', 'add', name, url)
-                self.gitm('fetch', name, redirect=False)
+                self.gitm('remote', 'add', '-f', name, url, redirect=False)
 
     @command
     @wants_parent
@@ -198,7 +197,7 @@ class BitBucket(GitSpindle):
 
     @command
     def clone(self, opts, repo=None):
-        """[--ssh|--http] [--parent] [git-clone-options] <repo> [<dir>]
+        """[--ssh|--http] [--triangular] [--parent] [git-clone-options] <repo> [<dir>]
            Clone a repository by name"""
         if not repo:
             repo = self.repository(opts)
@@ -265,7 +264,7 @@ class BitBucket(GitSpindle):
 
     @command
     def fork(self, opts):
-        """[--ssh|--http] [<repo>]
+        """[--ssh|--http] [--triangular] [<repo>]
            Fork a repo and clone it"""
         do_clone = bool(opts['<repo>'])
         repo = self.repository(opts)
@@ -528,17 +527,20 @@ class BitBucket(GitSpindle):
             err("You don't have %ss configured as a remote repository" % parent.full_name)
 
         # How many commits?
+        accept_empty_body = False
         commits = try_decode(self.gitm('log', '--pretty=%H', '%s/%s..%s' % (remote, dst, src)).stdout).strip().split()
         commits.reverse()
-        # 1: title/body from commit
         if not commits:
             err("Your branch has no commits yet")
+
+        # 1 commit: title/body from commit
         if len(commits) == 1:
             title, body = self.gitm('log', '--pretty=%s\n%b', '%s^..%s' % (commits[0], commits[0])).stdout.split('\n', 1)
             title = title.strip()
             body = body.strip()
+            accept_empty_body = not bool(body)
 
-        # More: title from branchname (titlecased, s/-/ /g), body comments from shortlog
+        # More commits: title from branchname (titlecased, s/-/ /g), body comments from shortlog
         else:
             title = src
             if '/' in title:
@@ -555,7 +557,7 @@ class BitBucket(GitSpindle):
         body += "\n# " + try_decode(self.gitm('shortlog', '%s/%s..%s' % (remote, dst, src)).stdout).strip().replace('\n', '\n# ')
         body += "\n#\n# " + try_decode(self.gitm('diff', '--stat', '%s^..%s' % (commits[0], commits[-1])).stdout).strip().replace('\n', '\n#')
         title, body = self.edit_msg("%s\n\n%s" % (title,body), 'PULL_REQUEST_EDIT_MSG')
-        if not body:
+        if not body and not accept_empty_body:
             err("No pull request message specified")
 
         try:
@@ -606,7 +608,7 @@ class BitBucket(GitSpindle):
 
     @command
     def set_origin(self, opts, repo=None, remote='origin'):
-        """[--ssh|--http]
+        """[--ssh|--http] [--triangular]
            Set the remote 'origin' to github.
            If this is a fork, set the remote 'upstream' to the parent"""
         if not repo:
@@ -640,13 +642,7 @@ class BitBucket(GitSpindle):
         if remote != 'origin':
             return
 
-        for branch in self.git('for-each-ref', 'refs/heads/**').stdout.strip().splitlines():
-            branch = branch.split(None, 2)[-1][11:]
-            if self.git('for-each-ref', 'refs/remotes/origin/%s' % branch).stdout.strip():
-                if self.git('config', 'branch.%s.remote' % branch).returncode != 0:
-                    print("Marking %s as remote-tracking branch" % branch)
-                    self.gitm('config', 'branch.%s.remote' % branch, 'origin')
-                    self.gitm('config', 'branch.%s.merge' % branch, 'refs/heads/%s' % branch)
+        self.set_tracking_branches(remote, upstream="upstream", triangular=opts['--triangular'])
 
     @command
     def snippet(self, opts):
@@ -699,7 +695,7 @@ class BitBucket(GitSpindle):
             except bbapi.BitBucketError:
                 keys = []
             for pkey in keys:
-                algo, key = pkey.key.split()
+                algo, key = pkey.key.split()[:2]
                 algo = algo[4:].upper()
                 if pkey.label:
                     print("%s key%s...%s (%s)" % (algo, ' ' * (6 - len(algo)), key[-10:], pkey.label))

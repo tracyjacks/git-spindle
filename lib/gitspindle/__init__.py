@@ -226,7 +226,7 @@ Options:
             return default
         return answer.lower() == 'y'
 
-    def edit_msg(self, msg, filename):
+    def edit_msg(self, msg, filename, split_title=True):
         if self.git('rev-parse'):
             temp_file = os.path.join(self.gitm('rev-parse', '--git-dir').stdout.strip(), filename)
         else:
@@ -237,11 +237,14 @@ Options:
         editor = shlex.split(self.gitm('var', 'GIT_EDITOR').stdout) + [temp_file]
         self.shell[editor[0]](*editor[1:], redirect=False)
         with open(temp_file) as fd:
-            title, body = (try_decode(fd.read()) +'\n').split('\n', 1)
+            msg = try_decode(fd.read())
         os.unlink(temp_file)
+        msg = re.compile('^#.*(:?\n|$)', re.MULTILINE).sub('', msg).strip()
+        if not split_title:
+            return msg
+        title, body = (msg + '\n').split('\n', 1)
         title = title.strip()
         body = body.strip()
-        body = re.compile('^#.*', re.MULTILINE).sub('', body).strip()
         return title, body
 
     def backup_message(self, title, body, filename):
@@ -267,6 +270,27 @@ Options:
             raise ValueError("Path not inside the git repository")
         path = path.replace(root, '')
         return path
+
+    def set_tracking_branches(self, remote, upstream=None, triangular=False):
+        for branch in self.git('for-each-ref', 'refs/heads/**').stdout.strip().splitlines():
+            branch = branch.split(None, 2)[-1][11:]
+            if triangular and upstream:
+                pushremote = remote
+                pullremote = upstream
+            else:
+                pushremote = None
+                pullremote = remote
+            if pullremote and self.git('for-each-ref', 'refs/remotes/%s/%s' % (pullremote, branch)).stdout.strip():
+                current = self.git('config', 'branch.%s.remote' % branch).stdout.strip()
+                if current in [remote, upstream, '']:
+                    print("Configuring branch %s to track remote %s" % (branch, pullremote))
+                    self.gitm('config', 'branch.%s.remote' % branch, pullremote)
+                    self.gitm('config', 'branch.%s.merge' % branch, 'refs/heads/%s' % branch)
+            if pushremote and self.git('for-each-ref', 'refs/remotes/%s/%s' % (pushremote, branch)).stdout.strip():
+                current = self.git('config', 'branch.%s.pushremote' % branch).stdout.strip()
+                if current in [remote, upstream, '']:
+                    print("Configuring branch %s to push to remote %s" % (branch, pushremote))
+                    self.gitm('config', 'branch.%s.pushremote' % branch, pushremote)
 
     def main(self):
         argv = self.prog.split()[1:] + sys.argv[1:]
@@ -391,13 +415,13 @@ Options:
             if opts['--repos']:
                 if namespace != self.my_login:
                     for repo in self.gh.organization(namespace).iter_repos():
-                        print repo
+                        print(repo)
                         if not repo.delete():
                             raise RuntimeError("Deleting repository failed")
                 else:
                     for repo in self.gh.iter_repos():
                         if repo.owner.login == namespace:
-                            print repo
+                            print(repo)
                             if not repo.delete():
                                 raise RuntimeError("Deleting repository failed")
             if opts['--gists']:
