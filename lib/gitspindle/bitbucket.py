@@ -3,6 +3,7 @@ from gitspindle.ansi import *
 import gitspindle.bbapi as bbapi
 import getpass
 import glob
+import re
 import os
 import sys
 import webbrowser
@@ -518,13 +519,20 @@ class BitBucket(GitSpindle):
         # Do we have the dst locally?
         for remote in self.gitm('remote').stdout.strip().split("\n"):
             url = self.gitm('config', 'remote.%s.url' % remote).stdout.strip()
-            if url in parent.links['clone'].values():
-                if parent.is_private and url != parent.links['clone']['ssh']:
+            if (
+                url in parent.links['clone'].values() or
+                url in [re.subn(r'\bgit\b', repo.owner['username'], v, 1)[0] for v in parent.links['clone'].values()]
+            ):
+                sshlink = parent.links['clone'].get('ssh', '')
+                if parent.is_private and url not in (
+                    sshlink,
+                    re.subn(r'\bgit\b', repo.owner['username'], sshlink, 1)[0]
+                ):
                     err("You should configure %s to fetch via ssh, it is a private repo" % parent.full_name)
                 self.gitm('fetch', remote, redirect=False)
                 break
         else:
-            err("You don't have %ss configured as a remote repository" % parent.full_name)
+            err("You don't have %s configured as a remote repository" % parent.full_name)
 
         # How many commits?
         accept_empty_body = False
